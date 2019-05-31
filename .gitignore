@@ -1,0 +1,10 @@
+/AadharSecureTravelIdentity/bin
+/AadharSecureTravelIdentity/obj
+/ASTI_BLL/bin
+/ASTI_BLL/obj
+/ASTI_DAL/bin
+/ASTI_DAL/obj
+/ASTI_Helper/bin
+/ASTI_Helper/obj
+/*.suo
+/AadharSecureTravelIdentity/*.user
