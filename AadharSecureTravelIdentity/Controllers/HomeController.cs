@@ -1,21 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using AadharSecureTravelIdentity.Models;
+using ASTI_BLL;
+using System;
 using System.Web.Mvc;
 
 namespace AadharSecureTravelIdentity.Controllers
 {
     public class HomeController : Controller
     {
-        //
-        // GET: /Home/
-
         public ActionResult Index()
         {
-            // Just a placeholder view
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Index(User user)
+        {
+            //Only a simple login method right now to show the code flow
+
+            var userLogin = new UserLogin();
+
+            var isLoggedIn = userLogin.VerifyLoginCredentials(user.UserName, user.Password);
+
+            if (isLoggedIn)
+            {
+                Session["UserName"] = Convert.ToString(user.UserName);
+                return RedirectToAction("AfterLogin");
+            }
+
+            return View();
+        }
+
+        public ActionResult AfterLogin()
+        {
+            if (Session["UserName"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }  
+        }
     }
 }

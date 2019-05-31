@@ -1,6 +1,30 @@
-﻿@{
+﻿@model AadharSecureTravelIdentity.Models.User
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Login Page</h2>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>@Html.LabelFor(user => user.UserName)</td>
+            <td>@Html.TextBoxFor(user => user.UserName)</td>
+            <td>@Html.ValidationMessageFor(user => user.UserName)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(user => user.Password)</td>
+            <td>@Html.TextBoxFor(user => user.Password)</td>
+            <td>@Html.ValidationMessageFor(user => user.Password)</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Login" />
+            </td>
+        </tr>
+
+    </table>
+}
+

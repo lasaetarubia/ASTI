@@ -39,8 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserLogin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ASTI_DAL\ASTI_DAL.csproj">
+      <Project>{93614eaf-8518-43e4-a464-9b75b6033f79}</Project>
+      <Name>ASTI_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASTI_Helper\ASTI_Helper.csproj">
+      <Project>{09f6196f-682f-4dbb-8e16-f73ea6336789}</Project>
+      <Name>ASTI_Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
