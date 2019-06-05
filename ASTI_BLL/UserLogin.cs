@@ -1,4 +1,5 @@
 ﻿using ASTI_DAL;
+using ASTI_Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace ASTI_BLL
 {
     public class UserLogin
     {
-        public bool VerifyLoginCredentials(string userName, string password)
+        public bool VerifyLoginCredentials(string userName, string password, UserType userType)
         {
             var login = new UserLoginDAL();
-            return login.VerifyCredentials(userName, password);
+            return login.VerifyCredentials(userName, password, userType);
         }
     }
 }

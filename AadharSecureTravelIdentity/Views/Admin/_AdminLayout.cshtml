@@ -11,17 +11,15 @@
         @Html.Partial("_Heading")
         <div class="row m-2">
             <div class="col-3 bg-light">
-                <div class="row py-1">
-                    Citizen
-                    <button type="button" class="btn btn-link py-0">Register</button>
-                    Here
-                </div>
-                <div class="row py-1">
-                    Registered users login here
-                </div>
-                <div class="row py-1">
-                    @Html.Partial("_LeftNavLogin")
-                </div>
+                @if (TempData["IsFromHome"] != null && (bool)TempData["IsFromHome"])
+                {
+                    Html.RenderPartial("_AdminLeftNavPartial");
+                }
+                else
+                {
+                    Html.RenderPartial("_AdminLeftNavStaffRegisterPartial");
+                }
+
             </div>
             <div class="col-9">
                 @RenderSection("featured", required: false)

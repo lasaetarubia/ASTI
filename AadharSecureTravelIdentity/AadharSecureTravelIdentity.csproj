@@ -122,10 +122,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -170,7 +172,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -183,10 +187,16 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\README.md" />
-    <Content Include="Views\Home\AfterLogin.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Shared\_Heading.cshtml" />
     <Content Include="Views\Shared\_LeftNavlogin.cshtml" />
+    <Content Include="Views\Admin\AdminIndex.cshtml" />
+    <Content Include="Views\Admin\_AdminLeftNavPartial.cshtml" />
+    <Content Include="Views\Admin\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_LeftNavPartial.cshtml" />
+    <Content Include="Views\Admin\RegisterStaff.cshtml" />
+    <Content Include="Views\Admin\_AdminLeftNavStaffRegisterPartial.cshtml" />
+    <Content Include="Views\Admin\RegistrationSuccessful.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

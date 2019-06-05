@@ -1,0 +1,38 @@
+﻿@model AadharSecureTravelIdentity.Models.Staff
+
+@{
+    ViewBag.Title = "RegisterStaff";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("RegisterStaff", "Admin", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div class="row ml-0 font-weight-bold">Staff registartion</div>
+        <hr />
+        <div class="row py-1">
+            <div class="col">Registration Date</div>
+            <div class="col">@Html.TextBoxFor(staff => staff.DateOfRegistration, "{0:MM/dd/yyyy}", new { disabled = "true" })</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.LabelFor(staff => staff.StaffName)</div>
+            <div class="col">@Html.TextBoxFor(staff => staff.StaffName)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.LabelFor(staff => staff.Location)</div>
+            <div class="col">@Html.TextBoxFor(staff => staff.Location)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.LabelFor(staff => staff.Password)</div>
+            <div class="col">@Html.PasswordFor(staff => staff.Password)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col-3">
+                <input type="submit" value="Register" />
+            </div>
+            <div class="col-3">
+                <input type="reset" value="Clear" id="btnReset" />
+            </div>
+        </div>
+    </div>
+}

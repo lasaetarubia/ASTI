@@ -15,31 +15,24 @@ namespace AadharSecureTravelIdentity.Controllers
         [HttpPost]
         public ActionResult Index(User user)
         {
-            //Only a simple login method right now to show the code flow
-
             var userLogin = new UserLogin();
 
-            var isLoggedIn = userLogin.VerifyLoginCredentials(user.UserName, user.Password);
+            var isLoggedIn = userLogin.VerifyLoginCredentials(user.UserName, user.Password, user.UserType);
 
             if (isLoggedIn)
             {
                 Session["UserName"] = Convert.ToString(user.UserName);
-                return RedirectToAction("AfterLogin");
+                switch (user.UserType)
+                {
+                    case ASTI_Helper.UserType.Admin:
+                        TempData["IsFromHome"] = true;
+                        return RedirectToAction("AdminIndex", "Admin");
+                    default:
+                        return RedirectToAction("Index");
+                }
             }
 
             return View();
-        }
-
-        public ActionResult AfterLogin()
-        {
-            if (Session["UserName"] != null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Index");
-            }  
         }
     }
 }
