@@ -13,9 +13,6 @@ namespace ASTI_DAL
     {
         public bool VerifyCredentials(string userName, string password, UserType userType)
         {
-            if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password))
-                return false;
-
             var isCorrectLogin = false;
             var sql = string.Empty;
             var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();

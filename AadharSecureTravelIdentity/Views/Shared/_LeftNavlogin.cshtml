@@ -1,20 +1,20 @@
-﻿@model AadharSecureTravelIdentity.Models.User
+﻿@model AadharSecureTravelIdentity.Models.UserViewModel
 
 @using (Html.BeginForm("Index", "Home", FormMethod.Post))
 {
     <div class="row py-1">
         <div class="col">Select User</div>
-        <div class="col">@Html.DropDownListFor(user => user.UserType,
+        <div class="col">@Html.DropDownListFor(user => user.AadharUser.UserType,
         new SelectList(Enum.GetValues(typeof(ASTI_Helper.UserType))))
         </div>
     </div>
     <div class="row py-1">
-        <div class="col">@Html.LabelFor(user => user.UserName)</div>
-        <div class="col">@Html.TextBoxFor(user => user.UserName)</div>
+        <div class="col">@Html.LabelFor(user => user.AadharUser.UserName)</div>
+        <div class="col">@Html.TextBoxFor(user => user.AadharUser.UserName)</div>
     </div>
     <div class="row py-1">
-        <div class="col">@Html.LabelFor(user => user.Password)</div>
-        <div class="col">@Html.PasswordFor(user => user.Password)</div>
+        <div class="col">@Html.LabelFor(user => user.AadharUser.Password)</div>
+        <div class="col">@Html.PasswordFor(user => user.AadharUser.Password)</div>
     </div>
     <div class="row py-1">
         <div class="col-3">

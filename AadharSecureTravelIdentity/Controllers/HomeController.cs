@@ -13,11 +13,12 @@ namespace AadharSecureTravelIdentity.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(User user)
+        public ActionResult Index(UserViewModel userModel)
         {
             var userLogin = new UserLogin();
+            var user = userModel.AadharUser;
 
-            var isLoggedIn = userLogin.VerifyLoginCredentials(user.UserName, user.Password, user.UserType);
+            var isLoggedIn = userLogin.VerifyLoginCredentials(user);
 
             if (isLoggedIn)
             {

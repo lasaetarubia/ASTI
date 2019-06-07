@@ -1,5 +1,6 @@
 ﻿using ASTI_DAL;
 using ASTI_Helper;
+using ASTI_Helper.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,13 @@ namespace ASTI_BLL
 {
     public class UserLogin
     {
-        public bool VerifyLoginCredentials(string userName, string password, UserType userType)
+        public bool VerifyLoginCredentials(User user)
         {
+            if (string.IsNullOrWhiteSpace(user.UserName) || string.IsNullOrWhiteSpace(user.Password))
+                return false;
+
             var login = new UserLoginDAL();
-            return login.VerifyCredentials(userName, password, userType);
+            return login.VerifyCredentials(user.UserName, user.Password, user.UserType);
         }
     }
 }

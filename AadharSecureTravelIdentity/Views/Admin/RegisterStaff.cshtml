@@ -1,4 +1,4 @@
-﻿@model AadharSecureTravelIdentity.Models.Staff
+﻿@model AadharSecureTravelIdentity.Models.StaffViewModel
 
 @{
     ViewBag.Title = "RegisterStaff";
@@ -12,19 +12,19 @@
         <hr />
         <div class="row py-1">
             <div class="col">Registration Date</div>
-            <div class="col">@Html.TextBoxFor(staff => staff.DateOfRegistration, "{0:MM/dd/yyyy}", new { disabled = "true" })</div>
+            <div class="col">@Html.TextBoxFor(staff => staff.AadharStaff.DateOfRegistration, "{0:MM/dd/yyyy}", new { disabled = "true" })</div>
         </div>
         <div class="row py-1">
-            <div class="col">@Html.LabelFor(staff => staff.StaffName)</div>
-            <div class="col">@Html.TextBoxFor(staff => staff.StaffName)</div>
+            <div class="col">@Html.LabelFor(staff => staff.AadharStaff.StaffName)</div>
+            <div class="col">@Html.TextBoxFor(staff => staff.AadharStaff.StaffName)</div>
         </div>
         <div class="row py-1">
-            <div class="col">@Html.LabelFor(staff => staff.Location)</div>
-            <div class="col">@Html.TextBoxFor(staff => staff.Location)</div>
+            <div class="col">@Html.LabelFor(staff => staff.AadharStaff.Location)</div>
+            <div class="col">@Html.TextBoxFor(staff => staff.AadharStaff.Location)</div>
         </div>
         <div class="row py-1">
-            <div class="col">@Html.LabelFor(staff => staff.Password)</div>
-            <div class="col">@Html.PasswordFor(staff => staff.Password)</div>
+            <div class="col">@Html.LabelFor(staff => staff.AadharStaff.Password)</div>
+            <div class="col">@Html.PasswordFor(staff => staff.AadharStaff.Password)</div>
         </div>
         <div class="row py-1">
             <div class="col-3">

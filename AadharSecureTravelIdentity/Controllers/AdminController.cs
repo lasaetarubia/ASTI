@@ -1,4 +1,6 @@
 ﻿using AadharSecureTravelIdentity.Models;
+using ASTI_BLL;
+using ASTI_Helper.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +18,29 @@ namespace AadharSecureTravelIdentity.Controllers
 
         public ActionResult RegisterStaff()
         {
-            Staff staff = new Staff();
-            staff.DateOfRegistration = DateTime.Today;
+            var staffModel = new StaffViewModel
+            {
+                AadharStaff = new Staff()
+            };
 
-            return View(staff);
+            staffModel.AadharStaff.DateOfRegistration = DateTime.Today;
+
+            return View(staffModel);
         }
 
         [HttpPost]
-        public ActionResult RegisterStaff(Staff staff)
+        public ActionResult RegisterStaff(StaffViewModel staffModel)
         {
-            return View("RegistrationSuccessful");
+            ASTIAdmin admin = new ASTIAdmin();
+
+            var staffId = admin.GetNewStaffId(staffModel.AadharStaff);
+            if (staffId > 0)
+            {
+                staffModel.AadharStaff.StaffId = staffId;
+                return View("RegistrationSuccessful", staffModel);
+            }
+            else
+                return View("Error");
         }
 
     }

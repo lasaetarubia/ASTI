@@ -1,8 +1,9 @@
-﻿@{
+﻿@model AadharSecureTravelIdentity.Models.StaffViewModel
+@{
     ViewBag.Title = "RegistrationSuccessful";
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
 
 <div class="container-fluid">
-    <div class="row ml-0 font-weight-bold">Registration Successful for Staff ID Generated: </div>
+    <div class="row ml-0 font-weight-bold">Registration Successful for Staff ID Generated: @Model.AadharStaff.StaffId </div>
 </div>
