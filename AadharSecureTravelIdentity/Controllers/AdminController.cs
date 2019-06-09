@@ -43,5 +43,35 @@ namespace AadharSecureTravelIdentity.Controllers
                 return View("Error");
         }
 
+        public ActionResult ProcessPendingApplication()
+        {
+            ASTIAdmin admin = new ASTIAdmin();
+
+            var pendingApplications = admin.GetAllPendingApplications().Where(app => app.IsPending).ToList();
+
+            var applicationModel = new ApplicationViewModel()
+            {
+                PendingApplications = pendingApplications,
+                SelectedApplicationId = 1
+            };
+
+            return View(applicationModel);
+        }
+
+        [HttpPost]
+        public ActionResult ProcessPendingApplication(ApplicationViewModel appModel)
+        {
+            var selectedApplicationNumber = appModel.SelectedApplicationId;
+            var citizenModel = new CitizenViewModel();
+            var admin = new ASTIAdmin();
+
+            var pendingCitizen = admin.GetPendingCitizen(selectedApplicationNumber);
+
+            citizenModel.AadharCitizen = pendingCitizen;
+            citizenModel.AadharApplication = new Application() { ApplicationNumber = selectedApplicationNumber, DateOfRegistration = DateTime.Now, IsPending = true };
+
+            return View("ProcessCitizen", citizenModel);
+        }
+
     }
 }

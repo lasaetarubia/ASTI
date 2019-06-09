@@ -1,4 +1,5 @@
-﻿using ASTI_Helper.Models;
+﻿using ASTI_Helper;
+using ASTI_Helper.Models;
 using System;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -29,6 +30,39 @@ namespace ASTI_DAL
             }
 
             return staffId;
+        }
+
+        public Citizen GetPendingCitizen(int appNum)
+        {
+            var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            Citizen citizen = new Citizen();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                var sql = "select * from citizenregn where appno = @appno";
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@appno", appNum);
+                con.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        citizen.Name = Convert.ToString(reader["cname"]);
+                        citizen.Address = Convert.ToString(reader["caddr"]);
+                        citizen.DateOfBirth = Convert.ToDateTime(reader["dob"]);
+                        citizen.FatherName = Convert.ToString(reader["fname"]);
+                        citizen.Contact = Convert.ToString(reader["cno"]);
+                        citizen.Occupation = Convert.ToString(reader["occ"]);
+                        citizen.Photo = Convert.ToString(reader["ph"]);
+                        citizen.PinCode = Convert.ToInt32(reader["pin"]);
+                        citizen.Gender = (Gender)Enum.Parse(typeof (Gender),Convert.ToString((reader["gend"])));
+                    }
+                }
+            }
+
+            return citizen;
         }
     }
 }

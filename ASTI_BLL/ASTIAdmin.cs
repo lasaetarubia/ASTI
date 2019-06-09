@@ -25,5 +25,27 @@ namespace ASTI_BLL
 
             return staffId;
         }
+
+        public List<Application> GetAllPendingApplications()
+        {
+            var applications = new List<Application> { 
+                new Application { ApplicationNumber = 1, DateOfRegistration = DateTime.Now, IsPending = true },
+                new Application { ApplicationNumber = 2, DateOfRegistration = DateTime.Now, IsPending = false },
+                new Application { ApplicationNumber = 3, DateOfRegistration = DateTime.Now, IsPending = true },
+                new Application { ApplicationNumber = 4, DateOfRegistration = DateTime.Now, IsPending = false },
+                new Application { ApplicationNumber = 5, DateOfRegistration = DateTime.Now, IsPending = true }
+            };
+
+            var pendingApplications = applications.Where(app => app.IsPending).ToList();
+
+            return pendingApplications;
+        }
+
+        public Citizen GetPendingCitizen(int appNum)
+        {
+            var admin = new ASTIAdminDAL();
+
+            return admin.GetPendingCitizen(appNum);
+        }
     }
 }

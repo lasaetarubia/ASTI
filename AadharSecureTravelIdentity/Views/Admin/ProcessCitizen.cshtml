@@ -1,0 +1,69 @@
+﻿@model AadharSecureTravelIdentity.Models.CitizenViewModel
+
+@{
+    ViewBag.Title = "ProcessCitizen";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("ProcessCitizen", "Admin", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div class="row ml-0 font-weight-bold">CITIZEN REGISTRATION</div>
+        <hr />
+        <div class="row py-1">
+            <div class="col">@Html.Label("Application No")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharApplication.ApplicationNumber)</div>
+
+            <div class="col">@Html.Label("Registration Date")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharApplication.DateOfRegistration, "{0:MM/dd/yyyy}", new { disabled = "true" })</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Citizen Name")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.Name)</div>
+
+            <div class="col">@Html.Label("Address")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.Address)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Date Of Birth")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.DateOfBirth, "{0:MM/dd/yyyy}")</div>
+
+            <div class="col">@Html.Label("Father's Name")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.FatherName)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Contact Number")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.Contact)</div>
+
+            <div class="col">@Html.Label("Occupation")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.Occupation)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Photo")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.Photo)</div>
+
+            <div class="col">@Html.Label("PinCode")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.PinCode)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Gender")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.Gender)</div>
+
+            <div class="col">@Html.Label("Surveyor Name")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.SurveyorName)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">
+                @Html.RadioButton("Verdict","Accept")  Accept
+            </div>
+            <div class="col">
+                @Html.RadioButton("Verdict","Reject")  Reject
+            </div>
+        </div>
+        <div class="row py-1">
+            <div class="col">
+                <input type="submit" value="Process" />
+            </div>
+        </div>
+    </div>
+}
