@@ -61,5 +61,46 @@ namespace ASTI_DAL
             }
             return sql;
         }
+
+        public bool ChangePassword(ASTI_Helper.Models.User user)
+        {
+            var result = -1;
+            var sql = string.Empty;
+            var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                sql = ChangePasswordBasedOnUserType(user.UserType, sql);
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@uid", user.UserName);
+                cmd.Parameters.AddWithValue("@pwd", user.Password);                
+                con.Open();
+
+                result = cmd.ExecuteNonQuery();
+            }
+
+            return result > 0;
+        }
+
+        private static string ChangePasswordBasedOnUserType(UserType userType, string sql)
+        {
+            switch (userType)
+            {
+                case UserType.Admin:
+                    sql = "update admin set pwd = @pwd where uid = @uid";
+                    break;
+                case UserType.Citizen:
+                    sql = "Select query here";
+                    break;
+                case UserType.Staff:
+                    sql = "Select query here";
+                    break;
+                default:
+                    sql = string.Empty;
+                    break;
+            }
+            return sql;
+        }
     }
 }

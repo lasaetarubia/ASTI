@@ -202,17 +202,15 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Shared\_Heading.cshtml" />
     <Content Include="Views\Shared\_LeftNavlogin.cshtml" />
     <Content Include="Views\Admin\AdminIndex.cshtml" />
-    <Content Include="Views\Admin\_AdminLeftNavPartial.cshtml" />
+    <Content Include="Views\Shared\_AdminLeftNavPartial.cshtml" />
     <Content Include="Views\Admin\_AdminLayout.cshtml" />
-    <Content Include="Views\Shared\_LeftNavPartial.cshtml" />
     <Content Include="Views\Admin\RegisterStaff.cshtml" />
-    <Content Include="Views\Admin\_AdminLeftNavStaffRegisterPartial.cshtml" />
+    <Content Include="Views\Shared\_AdminLeftNavStaffRegisterPartial.cshtml" />
     <Content Include="Views\Admin\RegistrationSuccessful.cshtml" />
     <Content Include="Views\Admin\ProcessCitizen.cshtml" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -225,6 +223,8 @@
     <Content Include="Scripts\popper.min.js.map" />
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Views\Admin\ProcessPendingApplication.cshtml" />
+    <Content Include="Views\Home\ChangePassword.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

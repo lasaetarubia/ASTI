@@ -19,5 +19,14 @@ namespace ASTI_BLL
             var login = new UserLoginDAL();
             return login.VerifyCredentials(user.UserName, user.Password, user.UserType);
         }
+
+        public bool ChangePassword(User user)
+        {
+            if (string.IsNullOrWhiteSpace(user.UserName) || string.IsNullOrWhiteSpace(user.Password))
+                return false;
+
+            var login = new UserLoginDAL();
+            return login.ChangePassword(user);
+        }
     }
 }
