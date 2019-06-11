@@ -55,14 +55,58 @@ namespace ASTI_DAL
                         citizen.FatherName = Convert.ToString(reader["fname"]);
                         citizen.Contact = Convert.ToString(reader["cno"]);
                         citizen.Occupation = Convert.ToString(reader["occ"]);
-                        citizen.Photo = Convert.ToString(reader["ph"]);
+                        citizen.ImagePath = Convert.ToString(reader["ph"]);
                         citizen.PinCode = Convert.ToInt32(reader["pin"]);
-                        citizen.Gender = (Gender)Enum.Parse(typeof (Gender),Convert.ToString((reader["gend"])));
+                        citizen.Gender = (Gender)Enum.Parse(typeof(Gender), Convert.ToString((reader["gend"])));
+                        citizen.AadharNumber = Convert.ToInt32(reader["ano"]);
+                        citizen.AadharPassword = Convert.ToString(reader["apwd"]);
                     }
                 }
             }
 
             return citizen;
+        }
+
+        public Citizen GetAadharInformation(int appNum)
+        {
+            var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            Citizen citizen = new Citizen();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                var sql = "select * from citizenregn where appno = @appno";
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@appno", appNum);
+                con.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        citizen.AadharNumber = Convert.ToInt32(reader["ano"]);
+                        citizen.AadharPassword = Convert.ToString(reader["apwd"]);
+                    }
+                }
+            }
+            return citizen;
+        }
+
+        public void AllocateUserId(int appNum)
+        {
+            var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            Citizen citizen = new Citizen();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                var sql = "update citizenregn set ispending = 0 where appno = @appno";
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@appno", appNum);
+                con.Open();
+
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }

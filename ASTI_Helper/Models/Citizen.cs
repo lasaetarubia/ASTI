@@ -20,13 +20,17 @@ namespace ASTI_Helper.Models
 
         public string Occupation { get; set; }
 
-        public object Photo { get; set; }
+        public string ImagePath { get; set; }
 
         public int PinCode { get; set; }
 
         public Gender Gender { get; set; }
 
         public string SurveyorName { get; set; }
+
+        public int AadharNumber { get; set; }
+
+        public string AadharPassword { get; set; }
 
     }
 }

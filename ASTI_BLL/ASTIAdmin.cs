@@ -47,5 +47,19 @@ namespace ASTI_BLL
 
             return admin.GetPendingCitizen(appNum);
         }
+
+        public Citizen GetAadharInformation(int appNum)
+        {
+            var admin = new ASTIAdminDAL();
+
+            return admin.GetAadharInformation(appNum);
+        }
+
+        public void AllocateUserId(int appNum)
+        {
+            var admin = new ASTIAdminDAL();
+
+            admin.AllocateUserId(appNum);
+        }
     }
 }

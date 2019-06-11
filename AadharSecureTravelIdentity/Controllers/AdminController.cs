@@ -67,11 +67,54 @@ namespace AadharSecureTravelIdentity.Controllers
 
             var pendingCitizen = admin.GetPendingCitizen(selectedApplicationNumber);
 
-            citizenModel.AadharCitizen = pendingCitizen;
-            citizenModel.AadharApplication = new Application() { ApplicationNumber = selectedApplicationNumber, DateOfRegistration = DateTime.Now, IsPending = true };
+            citizenModel.Name = pendingCitizen.Name;
+            citizenModel.Address = pendingCitizen.Address;
+            citizenModel.Contact = pendingCitizen.Contact;
+            citizenModel.DateOfBirth = pendingCitizen.DateOfBirth;
+            citizenModel.FatherName = pendingCitizen.FatherName;
+            citizenModel.Gender = pendingCitizen.Gender;
+            citizenModel.Occupation = pendingCitizen.Occupation;
+            citizenModel.ImagePath = pendingCitizen.ImagePath;
+            citizenModel.PinCode = pendingCitizen.PinCode;
+            citizenModel.SurveyorName = pendingCitizen.SurveyorName;//Should be recieved from DB
+            citizenModel.ApplicationNumber = selectedApplicationNumber;
+            citizenModel.DateOfRegistration = DateTime.Now;//Should be recieved from DB
+            citizenModel.IsPending = true;
 
             return View("ProcessCitizen", citizenModel);
         }
 
+        [HttpPost]
+        public ActionResult ProcessCitizen(CitizenViewModel citizenModel)
+        {
+            if (citizenModel.SelectedProcess == "Accept")
+            {
+                var admin = new ASTIAdmin();
+                var citizen = new Citizen();
+
+                citizen = admin.GetAadharInformation(citizenModel.ApplicationNumber);
+
+                citizenModel.AadharNumber = citizen.AadharNumber;
+                citizenModel.AadharPassword = citizen.AadharPassword;
+
+                return View("UIDAllocation", citizenModel);
+            }
+            else
+            {
+                return View("Rejected");
+            }
+        }
+
+        public ActionResult AllocateUID(CitizenViewModel citizenModel)
+        {
+            var admin = new ASTIAdmin();
+
+            //Right now not clear about what allocate uid is supposed to do, just making IsPending as false
+            admin.AllocateUserId(citizenModel.ApplicationNumber);
+
+            ViewBag.IsUIDAllocated = true;
+
+            return View("UIDAllocation");
+        }
     }
 }

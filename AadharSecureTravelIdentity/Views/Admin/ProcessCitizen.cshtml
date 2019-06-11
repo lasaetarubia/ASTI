@@ -12,52 +12,54 @@
         <hr />
         <div class="row py-1">
             <div class="col">@Html.Label("Application No")</div>
-            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharApplication.ApplicationNumber)</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.ApplicationNumber)</div>
 
             <div class="col">@Html.Label("Registration Date")</div>
-            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharApplication.DateOfRegistration, "{0:MM/dd/yyyy}", new { disabled = "true" })</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.DateOfRegistration, "{0:MM/dd/yyyy}", new { disabled = "true" })</div>
         </div>
         <div class="row py-1">
             <div class="col">@Html.Label("Citizen Name")</div>
-            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.Name)</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.Name)</div>
 
             <div class="col">@Html.Label("Address")</div>
-            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.Address)</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.Address)</div>
         </div>
         <div class="row py-1">
             <div class="col">@Html.Label("Date Of Birth")</div>
-            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.DateOfBirth, "{0:MM/dd/yyyy}")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.DateOfBirth, "{0:MM/dd/yyyy}")</div>
 
             <div class="col">@Html.Label("Father's Name")</div>
-            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.FatherName)</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.FatherName)</div>
         </div>
         <div class="row py-1">
             <div class="col">@Html.Label("Contact Number")</div>
-            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.Contact)</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.Contact)</div>
 
             <div class="col">@Html.Label("Occupation")</div>
-            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.Occupation)</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.Occupation)</div>
         </div>
         <div class="row py-1">
             <div class="col">@Html.Label("Photo")</div>
-            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.Photo)</div>
+            <div class="col">
+                <img class="img-thumbnail" src= "@Url.Content("~/content/" + Model.ImagePath)" alt="Image" />
+            </div>
 
             <div class="col">@Html.Label("PinCode")</div>
-            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.PinCode)</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.PinCode)</div>
         </div>
         <div class="row py-1">
             <div class="col">@Html.Label("Gender")</div>
-            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.Gender)</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.Gender)</div>
 
             <div class="col">@Html.Label("Surveyor Name")</div>
-            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharCitizen.SurveyorName)</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.SurveyorName)</div>
         </div>
         <div class="row py-1">
             <div class="col">
-                @Html.RadioButton("Verdict","Accept")  Accept
+                @Html.RadioButtonFor(citizen => citizen.SelectedProcess, "Accept")  Accept
             </div>
             <div class="col">
-                @Html.RadioButton("Verdict","Reject")  Reject
+                @Html.RadioButtonFor(citizen => citizen.SelectedProcess, "Reject")  Reject
             </div>
         </div>
         <div class="row py-1">

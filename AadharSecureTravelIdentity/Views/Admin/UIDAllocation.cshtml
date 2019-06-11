@@ -1,0 +1,44 @@
+﻿@model AadharSecureTravelIdentity.Models.CitizenViewModel
+@{
+    ViewBag.Title = "UIDAllocation";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+@Html.BeginForm("AllocateUID", "Admin", FormMethod.Post)
+{
+<div class="container-fluid">
+    <div class="row ml-0 font-weight-bold">UID ALLOCATION</div>
+    <hr />
+
+    @if (ViewBag.IsUIDAllocated != null && (bool)ViewBag.IsUIDAllocated)
+    {
+        <div class="row py-1">
+            <div class="col">USER ID ALLOCATED</div>
+        </div>
+    }
+    else
+    {
+        <div class="row py-1">
+            <div class="col">@Html.Label("Application No")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.ApplicationNumber)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Surveyor Name")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.SurveyorName)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Aadhar no")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharNumber)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Password")</div>
+            <div class="col">@Html.PasswordFor(citizen => citizen.AadharPassword)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">
+                <input type="submit" value="Allocate UID" />
+            </div>
+        </div>
+    }
+</div>
+}
