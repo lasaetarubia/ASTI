@@ -1,0 +1,61 @@
+﻿@model AadharSecureTravelIdentity.Models.PincodeViewModel
+
+@{
+    ViewBag.Title = "RegisterPincode";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("RegisterPincode", "Admin", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div class="row ml-0 font-weight-bold">PINCODE REGISTRATION</div>
+        <hr />
+
+        @if (ViewBag.IsPincodeRegistered != null && (bool)ViewBag.IsPincodeRegistered)
+        {
+            <div class="row py-1">
+                <div class="col">
+                    Station Limits Registered
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row py-1">
+                <div class="col">
+                    @Html.RadioButtonFor(pincode => pincode.StationType, "PoliceStation")  Police Station
+                </div>
+                <div class="col">
+                    @Html.RadioButtonFor(pincode => pincode.StationType, "RTA")  RTA
+                </div>
+            </div>
+            <div class="row py-1">
+                <div class="col">@Html.Label("Station Name")</div>
+                <div class="col">@Html.TextBoxFor(pincode => pincode.StationName)</div>
+
+                <div class="col">@Html.Label("Location")</div>
+                <div class="col">@Html.TextBoxFor(pincode => pincode.Location)</div>
+            </div>
+            <div class="row py-1">
+                <div class="col">@Html.Label("Incharge's Name")</div>
+                <div class="col">@Html.TextBoxFor(pincode => pincode.Incharge)</div>
+
+                <div class="col">@Html.Label("Password")</div>
+                <div class="col">@Html.PasswordFor(pincode => pincode.Password)</div>
+            </div>
+            <div class="row py-1">
+                <div class="col">@Html.Label("Pincode")</div>
+                <div class="col">@Html.TextBoxFor(pincode => pincode.Pincode)</div>
+            </div>
+            <div class="row py-1">
+                <div class="col">@Html.Label("Area")</div>
+                <div class="col">@Html.TextBoxFor(pincode => pincode.Area)</div>
+            </div>
+            <div class="row py-1">
+                <div class="col">
+                    <input type="submit" value="Register" />
+                </div>
+            </div>
+        }
+    </div> 
+}

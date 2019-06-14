@@ -16,6 +16,12 @@ namespace AadharSecureTravelIdentity.Controllers
             return View();
         }
 
+        public ActionResult Previous()
+        {
+            TempData["IsFromHome"] = true;
+            return RedirectToAction("AdminIndex");
+        }
+
         public ActionResult RegisterStaff()
         {
             var staffModel = new StaffViewModel
@@ -115,6 +121,31 @@ namespace AadharSecureTravelIdentity.Controllers
             ViewBag.IsUIDAllocated = true;
 
             return View("UIDAllocation");
+        }
+
+        public ActionResult RegisterPincode()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RegisterPincode(PincodeViewModel pincodeModel)
+        {
+            var admin = new ASTIAdmin();
+            var pinCode = new PincodeRegistration();
+
+            pinCode.Area = pincodeModel.Area;
+            pinCode.Incharge = pincodeModel.Incharge;
+            pinCode.Location = pincodeModel.Location;
+            pinCode.Password = pincodeModel.Password;
+            pinCode.Pincode = pincodeModel.Pincode;
+            pinCode.StationName = pincodeModel.StationName;
+            pinCode.StationType = pincodeModel.StationType;
+
+            var pinCodeId = admin.RegisterPinCode(pinCode);
+
+            ViewBag.IsPincodeRegistered = true;
+            return View();
         }
     }
 }

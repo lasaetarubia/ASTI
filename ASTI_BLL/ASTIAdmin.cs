@@ -61,5 +61,12 @@ namespace ASTI_BLL
 
             admin.AllocateUserId(appNum);
         }
+
+        public int RegisterPinCode(PincodeRegistration pinCode)
+        {
+            var admin = new ASTIAdminDAL();
+
+            return admin.RegisterPinCode(pinCode);
+        }
     }
 }

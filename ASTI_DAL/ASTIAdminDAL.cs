@@ -108,5 +108,32 @@ namespace ASTI_DAL
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public int RegisterPinCode(PincodeRegistration pinCode)
+        {
+            var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            var pincodeId = -1;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                var sql = "insert into pinmast (station, loc, inc, pwd, pinc, area, stype) values(@station, @loc, @incharge, @pwd, @pincode, @area, @stationType) select SCOPE_IDENTITY()";
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@station", pinCode.StationName);
+                cmd.Parameters.AddWithValue("@loc", pinCode.Location);
+                cmd.Parameters.AddWithValue("@incharge", pinCode.Incharge);
+                cmd.Parameters.AddWithValue("@pwd", pinCode.Password);
+                cmd.Parameters.AddWithValue("@pincode", pinCode.Pincode);
+                cmd.Parameters.AddWithValue("@area", pinCode.Area);
+                cmd.Parameters.AddWithValue("@stationType", pinCode.StationType);
+                con.Open();
+
+                pincodeId = Convert.ToInt32(cmd.ExecuteScalar());
+
+                con.Close();
+            }
+
+            return pincodeId;
+        }
     }
 }
