@@ -124,11 +124,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RTAController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ApplicationViewModel.cs" />
     <Compile Include="Models\CitizenViewModel.cs" />
+    <Compile Include="Models\LicenseViewModel.cs" />
     <Compile Include="Models\PincodeViewModel.cs" />
     <Compile Include="Models\StaffViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
@@ -228,6 +230,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Admin\UIDAllocation.cshtml" />
     <Content Include="Views\Admin\RegisterPincode.cshtml" />
+    <Content Include="Views\RTA\RTAIndex.cshtml" />
+    <Content Include="Views\Shared\_RTALeftNavPartial.cshtml" />
+    <Content Include="Views\RTA\_RTALayout.cshtml" />
+    <Content Include="Views\RTA\ScheduleLicenseApplication.cshtml" />
+    <Content Include="Views\RTA\CitizenProfile.cshtml" />
+    <Content Include="Views\RTA\DeclareResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

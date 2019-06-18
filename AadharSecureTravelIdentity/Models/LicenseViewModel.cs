@@ -6,10 +6,10 @@ using System.Web;
 
 namespace AadharSecureTravelIdentity.Models
 {
-    public class ApplicationViewModel
+    public class LicenseViewModel
     {
-        public List<Citizen> PendingApplications { get; set; }
+        public List<Citizen> PendingCitizen { get; set; }
 
-        public int SelectedApplicationId { get; set; }
+        public int SelectedId { get; set; }
     }
 }

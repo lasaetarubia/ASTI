@@ -49,6 +49,9 @@ namespace ASTI_DAL
                 case UserType.Admin:
                     sql = "select * from admin where uid = @uid";
                     break;
+                case UserType.RTA:
+                    sql = "select * from pinmast where station = @uid";
+                    break;
                 case UserType.Citizen:
                     sql = "Select query here";
                     break;
@@ -89,6 +92,9 @@ namespace ASTI_DAL
             {
                 case UserType.Admin:
                     sql = "update admin set pwd = @pwd where uid = @uid";
+                    break;
+                case UserType.RTA:
+                    sql = "update pinmast set pwd = @pwd where station = @uid";
                     break;
                 case UserType.Citizen:
                     sql = "Select query here";

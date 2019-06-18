@@ -1,6 +1,7 @@
 ﻿using ASTI_Helper;
 using ASTI_Helper.Models;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 
@@ -65,6 +66,46 @@ namespace ASTI_DAL
             }
 
             return citizen;
+        }
+
+        public List<Citizen> GetAllCitizens()
+        {
+            var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            Citizen citizen = new Citizen();
+            var citizenList = new List<Citizen>();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                var sql = "select * from citizenregn";
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+                con.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        citizen.Name = Convert.ToString(reader["cname"]);
+                        citizen.Address = Convert.ToString(reader["caddr"]);
+                        citizen.DateOfBirth = Convert.ToDateTime(reader["dob"]);
+                        citizen.FatherName = Convert.ToString(reader["fname"]);
+                        citizen.Contact = Convert.ToString(reader["cno"]);
+                        citizen.Occupation = Convert.ToString(reader["occ"]);
+                        citizen.ImagePath = Convert.ToString(reader["ph"]);
+                        citizen.PinCode = Convert.ToInt32(reader["pin"]);
+                        citizen.Gender = (Gender)Enum.Parse(typeof(Gender), Convert.ToString((reader["gend"])));
+                        citizen.AadharNumber = Convert.ToInt32(reader["ano"]);
+                        citizen.AadharPassword = Convert.ToString(reader["apwd"]);
+                        citizen.IsPending = Convert.ToString(reader["IsPending"]);
+                        citizen.IsLicensePending = Convert.ToString(reader["islicensepending"]);
+                        citizen.ApplicationId = Convert.ToInt32(reader["appno"]);
+
+                        citizenList.Add(citizen);
+                    }
+                }
+            }
+
+            return citizenList;
         }
 
         public Citizen GetAadharInformation(int appNum)

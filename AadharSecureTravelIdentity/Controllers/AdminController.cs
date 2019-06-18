@@ -53,7 +53,7 @@ namespace AadharSecureTravelIdentity.Controllers
         {
             ASTIAdmin admin = new ASTIAdmin();
 
-            var pendingApplications = admin.GetAllPendingApplications().Where(app => app.IsPending).ToList();
+            var pendingApplications = admin.GetAllPendingApplications();
 
             var applicationModel = new ApplicationViewModel()
             {

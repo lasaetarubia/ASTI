@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "DeclareResult";
+    Layout = "~/Views/RTA/_RTALayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row ml-0 font-weight-bold">RTA TEST SCHEDULED FOR Insert Date from model here</div>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>CitizenID</th>
+                <th>Venue</th>
+                <th>ReportTo</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>john@example.com</td>
+                <td>Parso</td>
+                <td>pata nahi</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr />
+
+    <div class="row py-1">
+        <div class="col">@Html.Label("CitizenID")</div>
+        @*<div class="col">@Html.TextBoxFor(pincode => pincode.Pincode)</div>*@
+    </div>
+    <div class="row py-1">
+        <div class="col">@Html.Label("Remarks")</div>
+        @*<div class="col">@Html.TextBoxFor(pincode => pincode.Area)</div>*@
+    </div>
+
+    <div class="row py-1">
+        <div class="col">
+            @*@Html.RadioButtonFor(pincode => pincode.StationType, "PoliceStation") *@ Accept
+        </div>
+        <div class="col">
+            @*@Html.RadioButtonFor(pincode => pincode.StationType, "RTA")*@  Reject
+        </div>
+    </div>
+
+    <div class="row py-1">
+        <div class="col">
+            <input type="submit" value="Set Status" />
+        </div>
+    </div>
+</div>

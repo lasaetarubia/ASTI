@@ -32,5 +32,11 @@ namespace ASTI_Helper.Models
 
         public string AadharPassword { get; set; }
 
+        public string IsPending { get; set; }
+
+        public string IsLicensePending { get; set; }
+
+        public int ApplicationId { get; set; }
+
     }
 }

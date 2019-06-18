@@ -35,6 +35,9 @@ namespace AadharSecureTravelIdentity.Controllers
                     case ASTI_Helper.UserType.Admin:
                         TempData["IsFromHome"] = true;
                         return RedirectToAction("AdminIndex", "Admin");
+                    case ASTI_Helper.UserType.RTA:
+                        TempData["IsFromHome"] = true;
+                        return RedirectToAction("RTAIndex", "RTA");
                     default:
                         return RedirectToAction("Index");
                 }
@@ -59,7 +62,7 @@ namespace AadharSecureTravelIdentity.Controllers
             var user = new User();
 
             user.UserName = userModel.UserName;
-            user.Password = userModel.Password;
+            user.Password = userModel.ConfirmPassword;
             user.UserType = userModel.UserType;
 
             var isPasswordChanged = userLogin.ChangePassword(user);

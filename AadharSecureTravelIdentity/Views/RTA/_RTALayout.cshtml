@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="container-fluid">
+        @Html.Partial("_Heading")
+        <div class="row m-2">
+            <div class="col-3 bg-light">
+                @Html.Partial("_RTALeftNavPartial")
+            </div>
+            <div class="col-9">
+                @RenderSection("featured", required: false)
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrapjs")
+    @Scripts.Render("~/bundles/appjs")
+</body>
+</html>

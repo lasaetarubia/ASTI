@@ -4,7 +4,8 @@
     {
         Admin = 1,
         Staff = 2,
-        Citizen = 3
+        Citizen = 3,
+        RTA = 4
     }
 
     public enum Gender

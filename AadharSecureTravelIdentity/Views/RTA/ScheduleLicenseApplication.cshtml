@@ -1,0 +1,35 @@
+﻿@model AadharSecureTravelIdentity.Models.LicenseViewModel
+@{
+    ViewBag.Title = "ScheduleLicenseApplication";
+    Layout = "~/Views/RTA/_RTALayout.cshtml";
+}
+
+@{
+    var pendingApplicationsIds = new List<int>();
+    
+    foreach(var applications in Model.PendingCitizen)
+    {
+        pendingApplicationsIds.Add(applications.AadharNumber);
+    }
+}
+
+@using (Html.BeginForm("ScheduleLicenseApplication", "RTA", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div class="row ml-0 font-weight-bold">LICENSE APPLICATION PENDING</div>
+        <hr />
+        <div class="row py-1">
+            <div class="col text-nowrap">Select Citizen ID : </div>
+            <div class="col">
+                @Html.DropDownListFor(
+                    a => a.SelectedId, new SelectList(pendingApplicationsIds)
+                )
+            </div>
+        </div>
+        <div class="row py-1">
+            <div class="col">
+                <input type="submit" value="Submit" />
+            </div>
+        </div>
+    </div>
+}
