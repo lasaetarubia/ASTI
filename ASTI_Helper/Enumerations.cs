@@ -15,4 +15,10 @@
         Others = 3
     }
 
+    public enum VehicleType
+    {
+        TwoWheeler = 1,
+        FourWheeler = 2
+    }
+
 }

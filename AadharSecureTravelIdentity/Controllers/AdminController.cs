@@ -84,8 +84,8 @@ namespace AadharSecureTravelIdentity.Controllers
             citizenModel.PinCode = pendingCitizen.PinCode;
             citizenModel.SurveyorName = pendingCitizen.SurveyorName;//Should be recieved from DB
             citizenModel.ApplicationNumber = selectedApplicationNumber;
-            citizenModel.DateOfRegistration = DateTime.Now;//Should be recieved from DB
-            citizenModel.IsPending = true;
+            citizenModel.DateOfRegistration = pendingCitizen.DateOfRegistration;//Should be recieved from DB
+            citizenModel.IsPending = pendingCitizen.IsPending;
 
             return View("ProcessCitizen", citizenModel);
         }

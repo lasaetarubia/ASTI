@@ -1,6 +1,77 @@
-﻿@{
+﻿@model AadharSecureTravelIdentity.Models.CitizenViewModel
+
+@{
     ViewBag.Title = "CitizenProfile";
     Layout = "~/Views/RTA/_RTALayout.cshtml";
 }
 
-<h2>CitizenProfile</h2>
+@using (Html.BeginForm("ProcessCitizenProfile", "RTA", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div class="row ml-0 font-weight-bold">CITIZEN PROFILE</div>
+        <hr />
+        <div class="row py-1">
+            <div class="col">@Html.Label("Citizen Id")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.AadharNumber)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Citizen Name")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.Name)</div>
+
+            <div class="col">@Html.Label("Address")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.Address)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Date Of Birth")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.DateOfBirth, "{0:MM/dd/yyyy}")</div>
+
+            <div class="col">@Html.Label("Father's Name")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.FatherName)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Contact Number")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.Contact)</div>
+
+            <div class="col">@Html.Label("Occupation")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.Occupation)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Photo")</div>
+            <div class="col">
+                <img class="img-thumbnail" src= "@Url.Content("~/content/" + Model.ImagePath)" alt="Image" />
+            </div>
+
+            <div class="col">@Html.Label("PinCode")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.PinCode)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Gender")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.Gender)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("VehicleType")</div>
+            <div class="col">@Html.DropDownListFor(
+                    a => a.VehicleType, new SelectList(Enum.GetValues(typeof(ASTI_Helper.VehicleType))))
+            </div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Venue")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.Venue)</div>
+
+            <div class="col">@Html.Label("Report To")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.SurveyorName)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">@Html.Label("Reporting Date")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.ReportingDate)</div>
+
+            <div class="col">@Html.Label("Reporting Time")</div>
+            <div class="col">@Html.TextBoxFor(citizen => citizen.ReportingTime)</div>
+        </div>
+        <div class="row py-1">
+            <div class="col">
+                <input type="submit" value="Process" />
+            </div>
+        </div>
+    </div>
+}

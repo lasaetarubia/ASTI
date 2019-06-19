@@ -15,5 +15,17 @@ namespace ASTI_BLL
             var rta = new ASTIRTADAL();
             return rta.GetPendingLicenseApplications().Where(license => license.IsLicensePending == "1").ToList();
         }
+
+        public Citizen GetLicensePendingCitizen(int selectedAadharNumber)
+        {
+            var adminDal = new ASTIAdminDAL();
+            return adminDal.GetLicensePendingCitizen(selectedAadharNumber);
+        }
+
+        public void ProcessCitizenProfile(Citizen citizen)
+        {
+            var rtaDAL = new ASTIRTADAL();
+            rtaDAL.ProcessCitizenProfile(citizen);
+        }
     }
 }

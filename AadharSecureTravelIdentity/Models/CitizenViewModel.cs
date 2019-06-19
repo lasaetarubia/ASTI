@@ -33,12 +33,22 @@ namespace AadharSecureTravelIdentity.Models
 
         public DateTime DateOfRegistration { get; set; }
 
-        public bool IsPending { get; set; }
+        public string IsPending { get; set; }
+
+        public string IsLicensePending { get; set; }
 
         public string SelectedProcess { get; set; }
 
         public int AadharNumber { get; set; }
 
         public string AadharPassword { get; set; }
+
+        public VehicleType VehicleType { get; set; }
+
+        public string Venue { get; set; }
+
+        public string ReportingDate { get; set; }
+
+        public string ReportingTime { get; set; }
     }
 }

@@ -38,5 +38,15 @@ namespace ASTI_Helper.Models
 
         public int ApplicationId { get; set; }
 
+        public DateTime DateOfRegistration { get; set; }
+
+        public int VehicleType { get; set; }
+
+        public string Venue { get; set; }
+
+        public DateTime ReportingDate { get; set; }
+
+        public TimeSpan ReportingTime { get; set; }
+
     }
 }

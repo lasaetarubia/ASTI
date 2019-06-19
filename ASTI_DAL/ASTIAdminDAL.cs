@@ -61,6 +61,46 @@ namespace ASTI_DAL
                         citizen.Gender = (Gender)Enum.Parse(typeof(Gender), Convert.ToString((reader["gend"])));
                         citizen.AadharNumber = Convert.ToInt32(reader["ano"]);
                         citizen.AadharPassword = Convert.ToString(reader["apwd"]);
+                        citizen.IsLicensePending = Convert.ToString(reader["islicensepending"]);
+                        citizen.IsPending = Convert.ToString(reader["IsPending"]);
+                    }
+                }
+            }
+
+            return citizen;
+        }
+
+        public Citizen GetLicensePendingCitizen(int aadharNumber)
+        {
+            var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            Citizen citizen = new Citizen();
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                var sql = "select * from citizenregn where ano = @ano";
+
+                SqlCommand cmd = new SqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@ano", aadharNumber);
+                con.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        citizen.Name = Convert.ToString(reader["cname"]);
+                        citizen.Address = Convert.ToString(reader["caddr"]);
+                        citizen.DateOfBirth = Convert.ToDateTime(reader["dob"]);
+                        citizen.FatherName = Convert.ToString(reader["fname"]);
+                        citizen.Contact = Convert.ToString(reader["cno"]);
+                        citizen.Occupation = Convert.ToString(reader["occ"]);
+                        citizen.ImagePath = Convert.ToString(reader["ph"]);
+                        citizen.PinCode = Convert.ToInt32(reader["pin"]);
+                        citizen.Gender = (Gender)Enum.Parse(typeof(Gender), Convert.ToString((reader["gend"])));
+                        citizen.ApplicationId = Convert.ToInt32(reader["appno"]);
+                        citizen.AadharNumber = Convert.ToInt32(reader["ano"]);
+                        citizen.AadharPassword = Convert.ToString(reader["apwd"]);
+                        citizen.IsLicensePending = Convert.ToString(reader["islicensepending"]);
+                        citizen.IsPending = Convert.ToString(reader["IsPending"]);
                     }
                 }
             }
